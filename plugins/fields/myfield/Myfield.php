@@ -17,8 +17,7 @@ use Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin;
  */
 class Myfield extends FieldsPlugin
 {   
-
-      /**
+     /**
      * Method to change the options Collection item.
      * Can be used to change labels.
      * Avoid changing other properties (than labels), if you are not aware of them.
