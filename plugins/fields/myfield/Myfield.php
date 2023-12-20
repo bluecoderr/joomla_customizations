@@ -17,7 +17,8 @@ use Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin;
  */
 class Myfield extends FieldsPlugin
 {   
-     /**
+
+      /**
      * Method to change the options Collection item.
      * Can be used to change labels.
      * Avoid changing other properties (than labels), if you are not aware of them.
@@ -25,7 +26,14 @@ class Myfield extends FieldsPlugin
      * @param \Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection $options
      * @return \Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection
      */
-    public function onJFiltersOptionsAfterCreation(\Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection $options) {
+    public function onJFiltersOptionsAfterCreation(\Bluecoder\Component\Jfilters\Administrator\Model\Filter\Option\Collection $options) 
+    {
+
+        // Make sure it is a field of that type
+        if ($options->getFilterItem()->getAttributes()->get('type') !== 'myfield') {
+            return $options;
+        }
+
         /** @var \Bluecoder\Component\Jfilters\Administrator\Model\Filter\OptionInterface $option */
         foreach ($options as $option) {
             // Convert 'IT' label to 'Italy'
